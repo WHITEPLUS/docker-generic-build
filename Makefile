@@ -1,6 +1,6 @@
 NAME      := generic-build
 REGISTRY  := whiteplus/$(NAME)
-VERSION   := 20170617
+VERSION   := 20170926
 
 .PHONY: build push
 
