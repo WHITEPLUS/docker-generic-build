@@ -11,7 +11,7 @@ RUN /bin/cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
  ca-certificates curl git zip jq bc vim \
  python python-yaml \
  python-pip python-dev libffi-dev \
- libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev libtidy-dev libssl-dev \
+ libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev libtidy-dev libssl-dev libicu-dev \
  \
  && apt-get -y --purge remove python-cffi \
  \

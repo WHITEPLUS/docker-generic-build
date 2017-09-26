@@ -1,0 +1,18 @@
+- name: Update composer
+  shell: |
+      export PATH=~/.anyenv/envs/phpenv/shims:$PATH
+      composer self-update --no-ansi --no-interaction --no-progress
+  register: composer_update
+  changed_when: "'Updating to version' in composer_update.stdout"
+  args:
+      executable: /bin/bash
+
+- name: Setup mirror for composer packages
+  shell: |
+      export PATH=~/.anyenv/envs/phpenv/shims:$PATH
+      composer config --global --no-ansi --no-interaction repositories.packagist composer https://packagist.jp
+  args:
+      executable: /bin/bash
+
+- include: composer_global_require.yml
+  when: composer_global_packages|length > 0
