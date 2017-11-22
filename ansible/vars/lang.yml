@@ -1,7 +1,9 @@
 node:
   version: 6.10.3
-php:
+php56:
   version: 5.6.30
+php71:
+  version: 7.1.11
 go:
   version: 1.8.1
 python3:

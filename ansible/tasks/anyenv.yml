@@ -30,7 +30,8 @@
   with_items:
     - { env: 'ndenv',  version: '{{ lang.node.version }}' }
     - { env: 'pyenv',  version: '{{ lang.python3.version }}'  }
-    - { env: 'phpenv', version: '{{ lang.php.version }}' }
+    - { env: 'phpenv', version: '{{ lang.php56.version }}' }
+    - { env: 'phpenv', version: '{{ lang.php71.version }}' }
 
 - name: Install pyenv-virtualenv
   git: 
