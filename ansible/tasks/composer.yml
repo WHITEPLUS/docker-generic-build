@@ -14,5 +14,8 @@
   args:
       executable: /bin/bash
 
-- include: composer_global_require.yml
+- include: composer_global_require.yml php_version={{ item.version }}
   when: composer_global_packages|length > 0
+  with_items:
+    - { version: '{{ lang.php56.version }}' }
+    - { version: '{{ lang.php71.version }}' }

@@ -18,7 +18,8 @@
     - include_vars:
         file: vars/lang.yml
         name: lang
-    - include_vars: vars/composer_global_packages.yml
+    - include_vars: vars/composer_global_packages_5.6.30.yml
+    - include_vars: vars/composer_global_packages_7.1.11.yml
     - include: tasks/anyenv.yml
-    - include: tasks/circleci.yml
     - include: tasks/composer.yml
+    - include: tasks/circleci.yml

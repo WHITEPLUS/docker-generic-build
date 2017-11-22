@@ -1,9 +1,11 @@
 - name: Install configured composer globally-required packages
   shell: |
+      eval "$(anyenv init -)"
+      phpenv global {{ php_version }}
       export PATH=~/.anyenv/envs/phpenv/shims:$PATH
       composer global require --no-ansi --no-interaction {{ item.name }}:{{ item.release | default('@stable') }}
   args:
       executable: /bin/bash
-      creates: ~/.anyenv/envs/phpenv/versions/{{ lang.php.version }}/composer/vendor/{{ item.name }}
-  with_items: "{{ composer_global_packages }}"
+      creates: ~/.anyenv/envs/phpenv/versions/{{ php_version }}/composer/vendor/{{ item.name }}
+  with_items: "{{ 'composer_global_packages_' + php_version }}"
 
