@@ -39,7 +39,7 @@ RUN curl -sL -o /tmp/docker-client.tgz https://get.docker.com/builds/Linux/x86_6
  && curl -sL https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-`uname -s`-`uname -m` \
     >| /usr/local/bin/docker-compose \
  && chmod +x /usr/local/bin/docker-compose \
- && rm -rf /tmp/*
+ && rm -rf /tmp/* /usr/bin/completion
 
 #==================
 # Yarn
