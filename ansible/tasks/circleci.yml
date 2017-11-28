@@ -1,7 +1,7 @@
 - name: Set anyenv globals
   shell: |
       eval "$(anyenv init -)"
-      {{ item.env }} global {{ item.version  }}
+      {{ item.env }} global {{ item.version }}
   args:
       executable: /bin/bash
   with_items:

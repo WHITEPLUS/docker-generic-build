@@ -18,8 +18,11 @@
     - include_vars:
         file: vars/lang.yml
         name: lang
-    - include_vars: vars/composer_global_packages_5.6.30.yml
-    - include_vars: vars/composer_global_packages_7.1.11.yml
     - include: tasks/anyenv.yml
-    - include: tasks/composer.yml
+    - include: tasks/composer.yml php_version={{ php.version }}
+      with_items:
+        - { version: '{{ lang.php56.version }}' }
+        - { version: '{{ lang.php71.version }}' }
+      loop_control:
+        loop_var: php
     - include: tasks/circleci.yml

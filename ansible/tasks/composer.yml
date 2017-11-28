@@ -1,5 +1,7 @@
 - name: Update composer
   shell: |
+      eval "$(anyenv init -)"
+      phpenv global {{ php_version }}
       export PATH=~/.anyenv/envs/phpenv/shims:$PATH
       composer self-update --no-ansi --no-interaction --no-progress
   register: composer_update
@@ -9,13 +11,14 @@
 
 - name: Setup mirror for composer packages
   shell: |
+      eval "$(anyenv init -)"
+      phpenv global {{ php_version }}
       export PATH=~/.anyenv/envs/phpenv/shims:$PATH
       composer config --global --no-ansi --no-interaction repositories.packagist composer https://packagist.jp
   args:
       executable: /bin/bash
 
-- include: composer_global_require.yml php_version={{ item.version }}
+- include_vars: "vars/composer_global_packages_{{ php_version }}.yml"
+
+- include: composer_global_require.yml
   when: composer_global_packages|length > 0
-  with_items:
-    - { version: '{{ lang.php56.version }}' }
-    - { version: '{{ lang.php71.version }}' }
